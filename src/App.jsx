@@ -3,14 +3,13 @@ import Map from "./components/Map";
 import { io } from "socket.io-client";
 
 function App() {
-  const socket = useMemo(() => io(import.meta.env.VITE_SERVER_HOST));
+  const socket = useMemo(() => io(import.meta.env.VITE_SERVER_HOST,{transports: ['websocket']}));
   const [AllUserLoacation, setAllUserLoacation] = useState(false);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
 
   socket.on("All-location", (data) => {
     setAllUserLoacation(data);
-    console.log(data);
   });
 
   const handleShareLocation = () => {
