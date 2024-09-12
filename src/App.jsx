@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import Map from "./components/map";
+import { useMemo, useState } from "react";
+import Map from "./components/Map";
 import { io } from "socket.io-client";
 
 function App() {
