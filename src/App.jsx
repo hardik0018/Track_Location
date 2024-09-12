@@ -3,7 +3,15 @@ import Map from "./components/Map";
 import { io } from "socket.io-client";
 
 function App() {
-  const socket = useMemo(() => io(import.meta.env.VITE_SERVER_HOST,{transports: ['websocket']}));
+  const socket = useMemo(() =>
+    io(import.meta.env.VITE_SERVER_HOST, {
+      cors: {
+        origin: process.env.VITE_SERVER_HOST,
+        methods: ["GET", "POST"],
+        credentials: true,
+      },
+    })
+  );
   const [AllUserLoacation, setAllUserLoacation] = useState(false);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
