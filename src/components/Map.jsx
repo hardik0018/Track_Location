@@ -8,7 +8,7 @@ const Map = ({ latitude, longitude, zoom, AllUser }) => {
       <MapContainer
         center={[latitude, longitude]}
         zoom={zoom}
-        style={{ height: "300px", width: "100vw" }}
+        style={{ height: "600px", width: "100vw" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
