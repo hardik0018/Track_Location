@@ -5,11 +5,7 @@ import { io } from "socket.io-client";
 function App() {
   const socket = useMemo(() =>
     io(import.meta.env.VITE_SERVER_HOST, {
-      cors: {
-        origin: process.env.VITE_SERVER_HOST,
-        methods: ["GET", "POST"],
-        credentials: true,
-      },
+      withCredentials: true,
     })
   );
   const [AllUserLoacation, setAllUserLoacation] = useState(false);
