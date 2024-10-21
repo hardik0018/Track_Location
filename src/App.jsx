@@ -14,8 +14,7 @@ function App() {
     socket.on("All-location", (data) => {
       setAllUserLoacation(data);
     });
-  }, [latitude,longitude])
-  
+  }, [latitude, longitude]);
 
   const handleShareLocation = () => {
     if (navigator.geolocation) {
