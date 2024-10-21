@@ -1,16 +1,21 @@
 import { useMemo, useState } from "react";
 import Map from "./components/Map";
 import { io } from "socket.io-client";
-
+let socket;
 function App() {
-  const socket = useMemo(() => io(import.meta.env.VITE_SERVER_HOST));
   const [AllUserLoacation, setAllUserLoacation] = useState(false);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
+  useEffect(() => {
+    socket = io(import.meta.env.VITE_SERVER_HOST);
+  }, []);
 
-  socket.on("All-location", (data) => {
-    setAllUserLoacation(data);
-  });
+  useEffect(() => {
+    socket.on("All-location", (data) => {
+      setAllUserLoacation(data);
+    });
+  }, [latitude,longitude])
+  
 
   const handleShareLocation = () => {
     if (navigator.geolocation) {
